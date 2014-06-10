@@ -1,0 +1,2 @@
+class AffinitiesController < ApplicationController
+end

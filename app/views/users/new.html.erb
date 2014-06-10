@@ -1,0 +1,8 @@
+
+<h1>Welcome to Khaos</h1>
+<p>Please enter your location here!</p>
+<%= form_for(@input, url:'users/create', method: 'post') do |f|%>
+	<%= f.text_field :curloc %>
+	<%= f.submit "Find Me!" %>
+<% end %>
+
