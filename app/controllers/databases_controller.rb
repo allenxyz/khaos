@@ -1,2 +1,0 @@
-class DatabasesController < ApplicationController
-end
