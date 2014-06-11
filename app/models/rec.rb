@@ -1,4 +1,6 @@
 class Rec < ActiveRecord::Base
 	belongs_to :user
-	has_one :data
+	has_one :place
+	has_and_belongs_to_many :tags
+	
 end

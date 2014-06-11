@@ -1,4 +1,4 @@
 class User < ActiveRecord::Base
-	has_many :rec
+	has_many :recs
 	geocoded_by :curloc
 end

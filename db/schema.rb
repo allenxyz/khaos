@@ -11,31 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140610185006) do
+ActiveRecord::Schema.define(version: 20140611142511) do
 
   create_table "affinities", force: true do |t|
     t.float    "aff"
+    t.integer  "tag_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "databases", force: true do |t|
+  create_table "places", force: true do |t|
     t.string   "loc"
     t.float    "longitude"
     t.float    "latitude"
+    t.integer  "rec_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "places_tags", id: false, force: true do |t|
+    t.integer "place_id", null: false
+    t.integer "tag_id",   null: false
   end
 
   create_table "recs", force: true do |t|
     t.string   "loc"
-    t.integer  "data_id"
+    t.integer  "place_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  create_table "recs_tags", id: false, force: true do |t|
+    t.integer "rec_id", null: false
+    t.integer "tag_id", null: false
+  end
+
   create_table "tags", force: true do |t|
-    t.string   "data_id"
     t.string   "tag"
     t.datetime "created_at"
     t.datetime "updated_at"
