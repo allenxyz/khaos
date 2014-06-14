@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 #gem "Google-Maps-for-Rails"
-#gem "gmaps4rails"
+gem "gmaps4rails"
 gem "geocoder"
 gem "rest-client"
 gem "json"

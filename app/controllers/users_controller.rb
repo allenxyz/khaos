@@ -5,32 +5,41 @@ class UsersController < ApplicationController
 
 	def create
 		curloc = params[:user][:curloc]	
-
-
 		if !(@user = User.find_by(:name => session[:user_id]))
-			session[:user_id] = (0...8).map { (65 + rand(26)).chr }.join   #create a random length 8 string
-			#find log and lat
-			:geocode
-			#create user
+
+
+
+			#should i use a session?
+			# => don't want to save - i'm going to restart before the start of each anyways
+			# => => need a way to keep track of :user_id when i move to places controller
+			# => => Ill need a model to know User.long/lat anyways
+			# 
+			# ill use a session first ----- deleting it is easy 
+
+
+			#create random length 8 string - until you find one that's unused
+			while (@user = User.find_by(:name => session[:user_id]))
+				session[:user_id] = (0...8).map { (65 + rand(26)).chr }.join  
+			end
+
 			@user = User.create(:name => session[:user_id], :curloc => curloc)
+			@user.geocode
+			@user.save
 		else
 			if curloc != @user.curloc
 				@user.curloc = curloc
-				:geocode
+				@user.geocode
+				@user.recs
+				@user.save
 			end
 			#############################     DO THIS WHEN YOU KNOW HOW THE THING WORKS!!!
 		end
 
-		puts @user.id
-		redirect_to "/users/index/#{@user.id}"
+		redirect_to "/places"
 
 	end
 
 
-	def index
-		@user = User.find(params[:id])
-
-	end
 
 
 
