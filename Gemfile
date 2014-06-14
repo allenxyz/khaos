@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
 
-gem "bootstrap-sass"
 #gem "Google-Maps-for-Rails"
-gem "gmaps4rails"
 gem "geocoder"
 gem "rest-client"
 gem "json"

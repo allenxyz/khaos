@@ -1,28 +1,57 @@
-<h1>This is the main page!</h1>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 
+    <!-- style of map, to be put in /stylesheets --> 
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 60%; width: 70%; margin-top: 0; margin-bottom: 0; margin-left: 3%; margin-right: 3%; padding: 0; }
+    </style>
+    
+    <!-- loading Google Maps API, javascript -->
+    <!-- add additional libraries to the API! -->
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=#{API_KEY}">
+    </script>
 
-<div class="head">
-	<p>This is the Header</p>
-	<%= link_to "How to" %>
-	<%= link_to "About Us" %>
-</div>
-<div class="loc">
-	<p>
-	Your current location is 
-	<%= @user.curloc %>
-	<%= link_to "Wrong Location?", root_path %>
-	</p>
+    <!-- to be called for loading on demand if wanted-->
+    <!-- to load lang and lat -->
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(-34.397, 150.644), 
+          zoom: 8
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 
+  </head>
 
-</div>
-<div class="map">
-	<p>Map is here</p>
-	<br><br><br><br><br><br><br><br>
-	<br><br><br><br><br><br><br><br>
-	<br><br><br><br><br><br><br><br>
+  <body>
+    <!-- sidebar? -->
+    <!-- 
+      <%= render "sidebar" %>
+    -->
 
-</div>
+    <h1>Main page!</h1>
 
-<div class="footer">
-<p>This is the footer</p>
-</div>
+    <div class="loc">
+      <p>
+      Your current location is 
+      <%= @user.curloc %>
+      <%= link_to "Wrong?", root_path %>
+      </p>
+    </div>
+
+    <%= link_to "Button1", 'places/button_no', :class => "Button", :method => "put" %>
+    <%= link_to "Button2", "places/button_yes", :class => "Button", :method => "put" %>
+    <%= link_to "Button3", "places/button_random", :class => "Button", :method => "put" %>
+
+    <div id="map-canvas"/>
+    
+
+  </body>
+

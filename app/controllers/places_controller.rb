@@ -1,12 +1,14 @@
 class PlacesController < ApplicationController
-	def filter
-		
+	def button_no
+		redirect_to '/index'
 	end
 
-	def reload
+	def button_yes
+		redirect_to	"/index"
 	end
 
-	def randomize
+	def button_random
+		redirect_to "/index"
 	end
 
 	def index
