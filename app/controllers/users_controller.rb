@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 			#############################     DO THIS WHEN YOU KNOW HOW THE THING WORKS!!!
 		end
 
-		redirect_to "/places"
+		redirect_to "/index"
 
 	end
 
