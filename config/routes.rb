@@ -5,7 +5,13 @@ Rails.application.routes.draw do
   post 'users/create' => "users#create"
 
 
-  get 'users/index/:id' => "users#index"
+  get 'index' => "places#index"
+
+
+
+
+
+  get 'places/test' => "places#test"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
