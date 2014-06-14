@@ -5,3 +5,4 @@ class Place < ActiveRecord::Base
 	geocoded_by :loc
 	after_validation :geocode, :if => :loc_changed?
 end
+
