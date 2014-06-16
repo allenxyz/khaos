@@ -11,11 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140613104749) do
+ActiveRecord::Schema.define(version: 20140614224341) do
 
   create_table "affinities", force: true do |t|
     t.float    "aff"
     t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", force: true do |t|
+    t.integer  "google_id"
+    t.time     "start_time"
+    t.string   "summary"
+    t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -29,6 +38,9 @@ ActiveRecord::Schema.define(version: 20140613104749) do
     t.datetime "updated_at"
     t.integer  "rating"
     t.string   "address"
+    t.string   "full_address"
+    t.string   "img"
+    t.string   "url"
   end
 
   create_table "places_tags", id: false, force: true do |t|
@@ -53,6 +65,7 @@ ActiveRecord::Schema.define(version: 20140613104749) do
     t.string   "tag"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "users", force: true do |t|

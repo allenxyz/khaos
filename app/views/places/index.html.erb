@@ -30,7 +30,26 @@
 
   </head>
 
+
+
+
+
+
   <body>
+
+
+  <b>
+    <% if flash[:success] %>
+      <%= flash[:success] %>
+    <% end %>
+    <% if flash[:error] %>
+      <%= flash[:error] %>
+    <% end %>
+  </b>
+
+
+
+
     <!-- sidebar? -->
     <!-- 
       <%= render "sidebar" %>
@@ -46,12 +65,30 @@
       </p>
     </div>
 
-    <%= link_to "Button1", 'places/button_no', :class => "Button", :method => "put" %>
-    <%= link_to "Button2", "places/button_yes", :class => "Button", :method => "put" %>
-    <%= link_to "Button3", "places/button_random", :class => "Button", :method => "put" %>
 
-    <div id="map-canvas"/>
+
+    <div class="btn">
+        <%= link_to "I hate this place", 'places/button_no', :class => "Button", :method => "put" %> <br>
+        <%= link_to "Looks pretty alright~", "places/button_yes", :class => "Button", :method => "put" %> <br>
+        <%= link_to "Find me somewhere like this!", "places/button_random", :class => "Button", :method => "put"%> <br>
+        <%= link_to "Restart algorithm", "places/reset", :class => "Button", :method => "put"%> <br>
+    </div>
+    <p>Your reccomended place to go: <%= @place.loc %>, <%= @place.address %></p>
     
 
+
+
+    <div class="filters"> 
+       <p>Find me a place to :</p>
+       <%= link_to "Feed me!", "FeedMe", :method => "put"%> <br>
+       <%= link_to "Grab a drink!", "Drink", :method => "put" %><br>
+       <%= link_to "Shop!", "Shop", :method => "put" %><br>
+       <%= link_to "See or do!", "SeeDo", :method => "put" %><br>
+       <%= link_to "Anything!!!", "All", :method => "put" %><br>
+   </div>
+
+   
+
+    <div id="map-canvas"/>
   </body>
 
