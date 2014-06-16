@@ -5,7 +5,7 @@ class Place < ActiveRecord::Base
 	geocoded_by :loc
 	after_validation :geocode, :if => :loc_changed?
 
-
+	has_many :events
 
 	#places needs to be some kind of ARRAY
 	def self.random(places)

@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   post 'users/create' => "users#create"
 
-
   get 'index' => "places#index"
 
   put 'places/button_no' => 'places#button_no'

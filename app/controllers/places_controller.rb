@@ -1,6 +1,5 @@
 class PlacesController < ApplicationController
 
-
 	#this will need to be changed manually
 
 
@@ -89,8 +88,6 @@ class PlacesController < ApplicationController
 		change_tags(tags, session[:user_id])
 		redirect_to '/index'
 	end
-
-
 
 
 	private 

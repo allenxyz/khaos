@@ -4,6 +4,7 @@
 @import url(http://fonts.googleapis.com/css?family=Lobster);
 
 
+
 body{
 	text-align: center
 }
@@ -18,7 +19,8 @@ position: fixed;
 z-index: -9999;
 margin-top: -10%;
 height: 100%;
-width: 120% ;
+width: 100% ;
+
 }
 
 .hidden-sm {
@@ -32,6 +34,7 @@ display: block!important;
 .title, .prompt{	
 	color: #FFF000;	
 	font-family:'Lobster', cursive;
+	text-align: center;
 }
 
 .title{
@@ -42,6 +45,10 @@ display: block!important;
 .prompt{
 	font-size: 32px;
 	margin-top: 2%;
+}
+
+.inner-container.form{
+	text-align: center;
 }
 
 
