@@ -3,7 +3,7 @@
 <div "container-new">
 
 	<!-- Video -->
-	<video id="videohome" class="hidden-xs hidden-sm" autoplay="true" loop="" muted="" style="height: 720px; width: 1280px;">
+	<video id="videohome" class="hidden-xs hidden-sm" autoplay="true" loop="" muted="" style="height: 100%; width: 100%;">
 		<source src="http://player.vimeo.com/external/90068336.hd.mp4?s=df933ea0ef031de9a80ddc2814f23d06" type="video/mp4">
 		<source src="/static/vid/electrik-web-bw.webmhd.webm" type="video/webm">
 		<source src="/static/vid/electrik-web-bw.oggtheora.ogv" type="ogv">
@@ -13,12 +13,10 @@
 	<div "inner-container">
 		<h1 class="title">Welcome to Khaos</h1>
 		<p class="prompt">Please enter your location here!</p>
-		<div "form">
-			<%= form_for(@input, url:'users/create', method: 'post') do |f|%>
-				<%= f.text_field :curloc %>
-				<%= f.submit "Find Me!" %>
-			<% end %>
-		</div>
+		<%= form_for(@input, url:'users/create', method: 'post') do |f|%>
+			<%= f.text_field :curloc %>
+			<%= f.submit "Find Me!" %>
+		<% end %>
 	</div>
 <!-- Footer -->
 </div>
