@@ -1,0 +1,29 @@
+@import url(http://fonts.googleapis.com/css?family=Lobster);
+
+
+.navbar{
+	/*font-family: 'Open Sans', sans-serif;*/
+	font-family:'Lobster', cursive;
+	color: #FFF000;
+/*	text-align: center;*/
+}
+
+.container-fluid{
+	color:#e7e7e7;
+}
+
+.navbar-default{
+	color:black;
+}
+.navbar-brand {
+	font-size: 22px;
+	font-weight: bold;
+}
+
+.navbar-default .navbar-collapse{
+  border-color: #e7e7e7;
+}
+
+.navbar-default .navbar-brand {
+  color: #000000;
+}
