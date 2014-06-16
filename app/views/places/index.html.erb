@@ -19,7 +19,7 @@
     <script type="text/javascript">
       function initialize() {
         var mapOptions = {
-          center: new google.maps.LatLng(-34.397, 150.644), 
+          center: new google.maps.LatLng(-33.9248685, 18.4240553), 
           zoom: 8
         };
         var map = new google.maps.Map(document.getElementById("map-canvas"),
@@ -52,7 +52,7 @@
       </p>
     </div>
 
-   <!--  <p>Your reccomended place to go: <%= @place.loc %>, <%= @place.address %></p> -->
+   <p>Your reccomended place to go: <%= @place.loc %>, <%= @place.address %></p>
     
 
     <div class="container-filter">
@@ -96,14 +96,13 @@
     </div>
 </div>
 
-
     <!-- sidebar? -->
   <ul class="col-sm-3 col-md-2 sidebar">
     <li class="list-group-item">Title</li>
-    <li class="list-group-item">Place_name</li>
-    <li class="list-group-item">Image</li>
+    <li class="list-group-item"> <%= @place.loc %></li>
+    <li class="list-group-item"> <%= image_tag @place.img %> </li>
     <li class="list-group-item">Description</li>
-    <li class="list-group-item">More infor</li>
+    <li class="list-group-item"> <%= link_to @place.url, @place.url, :target => "_blank" %></li>
   </ul>
 
 

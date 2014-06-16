@@ -58,7 +58,7 @@ double_check_places = []
 pagetoken = ""
 
 money = 4
-test = true
+test = false
 
 if (test)
 	money = 3
@@ -128,7 +128,8 @@ while (money >= 0)
 				rating = new_result['rating']
 
 				#put into databse
-				if (found = Place.where(:address => address, :loc => name))
+				found = Place.where(:address => address, :loc => name)
+				if (found.empty?)
 					a = Place.create(:loc => name, :longitude => long, :latitude => lat, :rating => rating, :address => address, :full_address => full_address, :img => img, :url => website, :rating => rating)
 
 					if (dummy)
@@ -153,7 +154,6 @@ while (money >= 0)
 						end
 					end
 
-					puts "money_#{money}"
 					a.tags << Tag.find_by(:tag => "money_#{money}")
 
 				else
@@ -183,7 +183,7 @@ while (money >= 0)
 
 end
 
-puts double_check_places
+double_check_places.each {|place| puts place}
 
 
 
