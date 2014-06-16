@@ -4,14 +4,11 @@ Rails.application.routes.draw do
 
   post 'users/create' => "users#create"
 
-
   get 'index' => "places#index"
 
   put 'places/button_no' => 'places#button_no'
   put 'places/button_yes' => 'places#button_yes'
   put 'places/button_random' => 'places#button_random'
-
-
 
   get 'places/test' => "places#test"
   # The priority is based upon order of creation: first created -> highest priority.
