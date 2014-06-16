@@ -3,10 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import url(http://fonts.googleapis.com/css?family=Lobster);
 
+
+
+body{
+	text-align: center
+}
+
+
+.video {
+	text-align: center;
+}
+
 video#videohome, video#video-capabilities {
 position: fixed;
 z-index: -9999;
 margin-top: -10%;
+height: 100%;
+width: 100% ;
+
 }
 
 .hidden-sm {
@@ -36,3 +50,23 @@ display: block!important;
 .inner-container.form{
 	text-align: center;
 }
+
+
+input[type=text] {padding:5px; border:2px solid #ccc; 
+-webkit-border-radius: 5px;
+border-radius: 5px;
+}
+
+input[type=text]:focus {
+	border-color:#333; 
+}
+
+input[type=submit] {
+	padding:5px 15px; 
+	background:#FFF000; 
+	border:0 none;
+	cursor:pointer;
+	-webkit-border-radius: 5px;
+	border-radius: 5px; 
+}
+
