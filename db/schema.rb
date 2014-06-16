@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614224341) do
+ActiveRecord::Schema.define(version: 20140616150143) do
 
   create_table "affinities", force: true do |t|
     t.float    "aff"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20140614224341) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "place_id"
   end
 
   create_table "places", force: true do |t|

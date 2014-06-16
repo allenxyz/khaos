@@ -1,31 +1,24 @@
-<div "container">
 <!-- Header -->
+<!-- Body-->
+<div "container-new">
 
-<!-- Side Bar -->
-<!-- Body -->
-<h1>Welcome to Khaos</h1>
-<p>Please enter your location here!</p>
+	<!-- Video -->
+	<video id="videohome" class="hidden-xs hidden-sm" autoplay="true" loop="" muted="" style="height: 720px; width: 1280px;">
+		<source src="http://player.vimeo.com/external/90068336.hd.mp4?s=df933ea0ef031de9a80ddc2814f23d06" type="video/mp4">
+		<source src="/static/vid/electrik-web-bw.webmhd.webm" type="video/webm">
+		<source src="/static/vid/electrik-web-bw.oggtheora.ogv" type="ogv">
+	</video>
 
-
-<%= form_for(@input, url:'users/create', method: 'post') do |f|%>
-	<%= f.text_field :curloc %>
-	<%= f.submit "Find Me!" %>
-<% end %>
-<!-- Footer -->
-</div>
-
-<video id="videohome" class="hidden-xs hidden-sm" autoplay="true" loop 	muted>
-	<source src="http://player.vimeo.com/external/90068336.hd.mp4?s=df933ea0ef031de9a80ddc2814f23d06" type="video/mp4"></source>
-	<source src="/static/vid/electrik-web-bw.webmhd.webm" type="video/webm"></source>
-	<source src="/static/vid/electrik-web-bw.oggtheora.ogv" type="ogv"></source>
-</video>
-
-<div class="home-wrap">
-	<div class="home-content">
-		<h1 class="intro">Empowering Your Great Idea</h1>
-		<hr width="120" align="left" style="border: 1px solid #e9edef;margin:30px 0 35px;">
-		<h3 class="intro-tag nomar-b" style="max-width:800px;">We design and build visually rich, functionally pristine human experiences for the web and mobile devices.</h3>
-		<div class="bump-lg"></div>
-		<a href="/capabilities" class="btn btn-primary btn-lg" role="button">Let's Do It Right</a>
+	<!--  -->
+	<div "inner-container">
+		<h1 class="title">Welcome to Khaos</h1>
+		<p class="prompt">Please enter your location here!</p>
+		<div "form">
+			<%= form_for(@input, url:'users/create', method: 'post') do |f|%>
+				<%= f.text_field :curloc %>
+				<%= f.submit "Find Me!" %>
+			<% end %>
+		</div>
 	</div>
+<!-- Footer -->
 </div>

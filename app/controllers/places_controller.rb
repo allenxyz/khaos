@@ -90,8 +90,6 @@ class PlacesController < ApplicationController
 	end
 
 
-
-
 	private 
 
 		def to_rec(place)

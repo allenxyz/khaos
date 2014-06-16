@@ -1,3 +1,38 @@
 // Place all the styles related to the User controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import url(http://fonts.googleapis.com/css?family=Lobster);
+
+video#videohome, video#video-capabilities {
+position: fixed;
+z-index: -9999;
+margin-top: -10%;
+}
+
+.hidden-sm {
+display: block!important;
+}
+
+.video {
+	object-fit: contain;
+}
+
+.title, .prompt{	
+	color: #FFF000;	
+	font-family:'Lobster', cursive;
+	text-align: center;
+}
+
+.title{
+	font-size: 72px;
+	margin-top: 5%;
+}
+
+.prompt{
+	font-size: 32px;
+	margin-top: 2%;
+}
+
+.inner-container.form{
+	text-align: center;
+}
