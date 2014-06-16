@@ -9,6 +9,16 @@ Rails.application.routes.draw do
   put 'places/button_no' => 'places#button_no'
   put 'places/button_yes' => 'places#button_yes'
   put 'places/button_random' => 'places#button_random'
+  put 'places/reset' => 'places#reset'
+
+  get 'HowTo' => "users#howto"
+  get 'About' => "users#about"
+
+  put "FeedMe" => "places#feed"
+  put "Drink" => "places#drink"
+  put "Shop" => "places#shop"
+  put "SeeDo" => "places#see"
+  put "All" => "places#all"
 
   get 'places/test' => "places#test"
   # The priority is based upon order of creation: first created -> highest priority.
