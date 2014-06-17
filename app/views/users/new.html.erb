@@ -14,12 +14,10 @@
 	<div "inner-container">
 		<h1 class="title">Welcome to Khaos</h1>
 		<p class="prompt">Please enter your location here!</p>
-		<div "form">
-			<%= form_for(@input, url:'users/create', method: 'post') do |f|%>
-				<%= f.text_field :curloc %>
-				<%= f.submit "Find Me!" %>
-			<% end %>
-		</div>
+		<%= form_for(@input, url:'users/create', method: 'post') do |f|%>
+			<%= f.text_field :curloc %>
+			<%= f.submit "Find Me!" %>
+		<% end %>
 	</div>
 <!-- Footer -->
 </div>

@@ -1,5 +1,37 @@
 // Place all the styles related to the places controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 @import url(http://fonts.googleapis.com/css?family=Lobster);
+
+
+
+.body {
+	position:fixed;
+/*	background-color: #9CF;	*/
+	color: #FFF000;
+
+}
+
+.container-main{
+	width:980px;
+	height:600px;
+	text-align: center;
+}
+
+hr{
+	boader: 0;
+	border-bottom: 1px dashed #ccc;
+	background: #999;
+}
+
+.container-filter{
+	width:980px;
+	height:32px;
+}
+
+.container-btn{
+	margin-top: 3%;
+	width:980px;
+	height:32px;
+}
+
