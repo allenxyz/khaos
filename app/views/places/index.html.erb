@@ -20,11 +20,21 @@
       function initialize() {
         var mapOptions = {
           center: new google.maps.LatLng(-33.9248685, 18.4240553), 
-          zoom: 8
+          zoom: 11
         };
         var map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);
       }
+
+      var DirectionsRequest = {
+        origin: @user.curloc,
+        destination: new google.maps.latlng(@place.latitude, @place.longditutde),
+        travelMode: TravelMode.WALKING,
+        unitSystem: UnitSystem.METRIC,
+        region: "http://maps.google.co.za";
+      }
+
+
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 
@@ -42,6 +52,10 @@
 
 
 
+
+
+
+
 <div class="container-main">
 
     <div class="loc">
@@ -52,7 +66,7 @@
       </p>
     </div>
 
-   <p>Your reccomended place to go: <%= @place.loc %>, <%= @place.address %></p>
+   <p>Your reccomended place to go: <%= @place.loc %>, <%= @place.address %> (<%= @place.longitude %>, <%= @place.latitude %>)</p>
     
 
         <div class="container-filter">
@@ -97,7 +111,6 @@
     </div>
 
     <!-- sidebar? -->
-<<<<<<< HEAD
   <ul class="col-sm-3 col-md-2 sidebar">
     <li class="list-group-item">Title</li>
     <li class="list-group-item"> <%= @place.loc %></li>
@@ -106,16 +119,6 @@
     <li class="list-group-item"> <%= link_to @place.url, @place.url, :target => "_blank" %></li>
   </ul>
 
-=======
-    <ul class="col-sm-3 col-md-2 sidebar">
-      <li class="list-group-item">Title</li>
-      <li class="list-group-item">Place_name</li>
-      <li class="list-group-item">Image</li>
-      <li class="list-group-item">Description</li>
-      <li class="list-group-item">More infor</li>
-    </ul>
-</body>
->>>>>>> f9f5cb8c3d30bb83057964a73bae793ae5174db9
 
 
 

@@ -54,7 +54,7 @@ class Place < ActiveRecord::Base
 		#remove those that you have been to before
 
 		possible_rec.each_index do |index|
-			while user.recs.include?(possible_rec)
+			while user.recs.include?(possible_rec) || possible_rec[index]
 				possible_rec.delete_at(index)
 			end
 		end

@@ -6,8 +6,8 @@ class PlacesController < ApplicationController
 	def button_no
 		@user = User.find_by(:name => session[:user_id])
 		# decrement all the afinities
+
 		@user.recs.last.tags.each do |tag|
-			puts tag.tag
 			a = tag.affinity
 			a.aff -= 1 if a.aff > 1
 			a.save
@@ -33,7 +33,7 @@ class PlacesController < ApplicationController
 
 	def reset
 		@user = User.find_by(:name => session[:user_id])
-		@user.tags.each do |tag|
+		@user.tags.each do |tag|	
 			a = tag.affinity
 			a.aff = 5
 			a.save
@@ -54,6 +54,13 @@ class PlacesController < ApplicationController
 		else 		
 			rec = to_rec(@place)
 			rec.place = @place
+			#link it to approriate tag
+			@place.tags.each do |tag|
+				t = @user.tags.find_by(:tag => tag.tag)
+				rec.tags << t
+			end
+
+
 			@user.recs << rec
 		end
 	end
@@ -89,6 +96,9 @@ class PlacesController < ApplicationController
 		redirect_to '/index'
 	end
 
+	def test
+
+	end
 
 	private 
 
