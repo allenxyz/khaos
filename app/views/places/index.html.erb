@@ -52,10 +52,10 @@
       var directionsService = new google.maps.DirectionsService();
       var map;
 
-      var height = new google.maps.LatLng(-33.924868, 18.424055);
-      var oceanBeach = new google.maps.LatLng(-33.924868, 19.424055);
-      // var height = new google.maps.LatLng(@user.latitude, @user.longitude);
-      // var oceanBeach = new google.maps.LatLng(@user.latitude, @place.longitude);
+      // var height = new google.maps.LatLng(-33.924868, 18.424055);
+      // var oceanBeach = new google.maps.LatLng(-33.924868, 19.424055);
+      var height = new google.maps.LatLng(<%= @user.latitude %>, <%=@user.longitude%>);
+      var oceanBeach = new google.maps.LatLng(<%=@place.latitude%>, <%=@place.longitude%>);
 
       function initialize() {
 
@@ -76,7 +76,7 @@
             // Note that Javascript allows us to access the constant
             // using square brackets and a string value as its
             // "property."
-            travelMode: google.maps.TravelMode[selectedMode]
+            travelMode: google.maps.TravelMode.WALKING
         };
         directionsService.route(request, function(response, status) {
           if (status == google.maps.DirectionsStatus.OK) {
@@ -84,6 +84,7 @@
           }
         });
       }
+
 
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
