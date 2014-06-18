@@ -85,7 +85,12 @@ hr {
 }
 
 video#videohome, video#video-capabilities {
-	position: absolute;
+/*position: fixed;
+z-index: -9999;
+margin-top: -10%;
+height: 100%;
+width: 100% ;
+*/	position: absolute;
 	z-index: -9999;
 	margin-top: 0px;
 	margin-left: 0px;

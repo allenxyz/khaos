@@ -17,8 +17,8 @@
 	width:900px;
 	height:600px;
 	margin: auto;
-
-
+	margin-right: auto + 20%;
+	text-align: center;
 }
 
 hr{
@@ -58,5 +58,5 @@ hr{
 
 ul[class=".col-xs-3 .col-md-2 sidebar"] {
 	width: 20%;
+	margin: auto;
 }
-
