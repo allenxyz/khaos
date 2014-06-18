@@ -48,21 +48,23 @@ class Place < ActiveRecord::Base
 
 
 
-		possible_rec = Place.find_contains(tags)
-
+		possible_place = Place.find_contains(tags)
+		been_to = user.recs.map {|rec| rec.place}
+		puts "ASDF #{possible_place} \n\n\n user: #{user.name}"
 
 		#remove those that you have been to before
 
-		possible_rec.each_index do |index|
-			while user.recs.include?(possible_rec)
-				possible_rec.delete_at(index)
+		possible_place.each_index do |index|
+			while been_to.include?(possible_place[index])
+				possible_place.delete_at(index)
 			end
 		end
 
-		return nil if possible_rec.empty? 
+
+		return nil if possible_place.empty? 
 
 
-		return possible_rec[rand(possible_rec.length - 1)]
+		return possible_place[rand(possible_place.length - 1)]
 
 
 	end

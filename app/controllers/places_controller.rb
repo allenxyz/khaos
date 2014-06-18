@@ -6,8 +6,8 @@ class PlacesController < ApplicationController
 	def button_no
 		@user = User.find_by(:name => session[:user_id])
 		# decrement all the afinities
+
 		@user.recs.last.tags.each do |tag|
-			puts tag.tag
 			a = tag.affinity
 			a.aff -= 1 if a.aff > 1
 			a.save
@@ -33,7 +33,7 @@ class PlacesController < ApplicationController
 
 	def reset
 		@user = User.find_by(:name => session[:user_id])
-		@user.tags.each do |tag|
+		@user.tags.each do |tag|	
 			a = tag.affinity
 			a.aff = 5
 			a.save
@@ -44,8 +44,6 @@ class PlacesController < ApplicationController
 
 	
 	def index
-		puts params
-		puts session[:user_id]
 		@user = User.find_by(:name => session[:user_id])
 
 		if !(@place = Place.find_rec_place(session))
@@ -54,6 +52,13 @@ class PlacesController < ApplicationController
 		else 		
 			rec = to_rec(@place)
 			rec.place = @place
+			#link it to approriate tag
+			@place.tags.each do |tag|
+				t = @user.tags.find_by(:tag => tag.tag)
+				rec.tags << t
+			end
+
+
 			@user.recs << rec
 		end
 	end
@@ -78,7 +83,7 @@ class PlacesController < ApplicationController
 
 
 	def see
-		tags = %w[amusement_park aquarium beauty_salon bicycle_store book_store bowling_alley campground casino cemetery church city_hall courthouse establishment gym hindu_temple library mosque movie_theater museum night_club park place_of_worship rv_park shopping_mall school spa stadium synagogue university zoo money_0 money_1 money_2 money_3 money_4]
+		tags = %w[amusement_park aquarium beauty_salon bicycle_store book_store bowling_alley campground casi1 cemetery church city_hall courthouse establishment gym hindu_temple library mosque movie_theater museum night_club park place_of_worship rv_park shopping_mall school spa stadium synagogue university zoo money_0 money_1 money_2 money_3 money_4]
 		change_tags(tags, session[:user_id])
 		redirect_to '/index'
 	end
@@ -89,11 +94,13 @@ class PlacesController < ApplicationController
 		redirect_to '/index'
 	end
 
+	def test
+
+	end
 
 	private 
 
 		def to_rec(place)
-			puts place
 			return Rec.create(:loc => place.loc, :place_id => place.id)
 		end
 
@@ -106,7 +113,6 @@ class PlacesController < ApplicationController
 
 		def change_tags(tags, user_id)
 			all_tags =  %w[amusement_park aquarium art_gallery bakery bar beauty_salon bicycle_store book_store bowling_alley cafe campground casino cemetery church city_hall clothing_store courthouse department_store establishment food gym hindu_temple jewelry_store library liquor_store meal_delivery meal_takeaway mosque movie_theater museum night_club park place_of_worship restaurant rv_park shopping_mall school spa stadium synagogue university zoo money_0 money_1 money_2 money_3 money_4]			
-			puts session
 			user = User.find_by(:name => user_id)
 
 

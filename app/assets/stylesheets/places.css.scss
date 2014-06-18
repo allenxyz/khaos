@@ -13,13 +13,14 @@
 }
 
 .container-main{
-	width:980px;
+	width:1000px;
 	height:600px;
+	margin: auto;
 	text-align: center;
 }
 
 hr{
-	boader: 0;
+	border: 0;
 	border-bottom: 1px dashed #ccc;
 	background: #999;
 }
@@ -30,11 +31,24 @@ hr{
 }
 
 .container-btn{
-	margin-top: 3%;
+	margin-top: 1%;
+	margin-bottom: 1%;
 	width:980px;
 	height:32px;
 }
 
-.map-canvas{
-	text-align: center;
+#map-canvas {
+height: 68%;
+width: 95%;
+margin-top: 0px;
+margin-bottom: 0;
+margin-left: auto;
+margin-right: auto;
+padding: 0;
 }
+
+
+ul[class=".col-xs-3 .col-md-2 sidebar"] {
+	width: 20%;
+}
+

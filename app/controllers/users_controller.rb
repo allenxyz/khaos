@@ -33,11 +33,11 @@ class UsersController < ApplicationController
 				a.affinity = Affinity.create(:aff => 5)
 			end
 
-			puts "MAKING A NEW USER WTF?"
+			puts "MAKING a new user!!!"
 			@user.geocode
 			@user.save
 		else
-			puts "NOT MAKING A NEW USER T.T..................."
+			puts "NOT making a new user"
 			if curloc != @user.curloc
 				@user.curloc = curloc
 				@user.geocode

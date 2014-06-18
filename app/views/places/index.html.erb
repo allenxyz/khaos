@@ -1,3 +1,4 @@
+
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 
     <!-- style of map, to be put in /stylesheets --> 
@@ -51,10 +52,10 @@
       var directionsService = new google.maps.DirectionsService();
       var map;
 
-      var height = new google.maps.LatLng(-33.924868, 18.424055);
-      var oceanBeach = new google.maps.LatLng(-33.924868, 19.424055);
-      // var height = new google.maps.LatLng(@user.latitude, @user.longitude);
-      // var oceanBeach = new google.maps.LatLng(@user.latitude, @place.longitude);
+      // var height = new google.maps.LatLng(-33.924868, 18.424055);
+      // var oceanBeach = new google.maps.LatLng(-33.924868, 19.424055);
+      var height = new google.maps.LatLng(<%= @user.latitude %>, <%=@user.longitude%>);
+      var oceanBeach = new google.maps.LatLng(<%=@place.latitude%>, <%=@place.longitude%>);
 
       function initialize() {
 
@@ -75,7 +76,7 @@
             // Note that Javascript allows us to access the constant
             // using square brackets and a string value as its
             // "property."
-            //travelMode: google.maps.TravelMode[selectedMode]
+
             travelMode: google.maps.TravelMode.WALKING
         };
         directionsService.route(request, function(response, status) {
@@ -84,6 +85,8 @@
           }
         });
       }
+
+
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>  
 
@@ -110,7 +113,6 @@
 
 
 <div class="container-main">
-
     <div class="loc">
       <p>
       Your current location is 
@@ -122,23 +124,23 @@
    <p>Your reccomended place to go: <%= @place.loc %>, <%= @place.address %></p>
     
 
-    <div class="container-filter">
-        <div class="col-lg-3">
+    <div class="container-filter .col-xs-12 .col-sm-6 .col-md-8">
+        <div class="col-md-2 col-sm-2 col-xs-2">
            <p>Find me a place to :</p>
         </div>
-        <div class="col-lg-2">
+        <div class="col-md-2 col-sm-2 col-xs-2">
          <%= link_to "Feed me!", "FeedMe", :class => "btn btn-primary",:method => "put"%> <br>
          </div>
-         <div class="col-lg-2">
+         <div class="col-md-2 col-sm-2 col-xs-2">
          <%= link_to "Grab a drink!", "Drink", :class => "btn btn-primary",:method => "put" %><br>
          </div>
-         <div class="col-lg-1">
+         <div class="col-md-2 col-sm-2 col-xs-2">
          <%= link_to "Shop!", "Shop", :class => "btn btn-primary",:method => "put" %><br>
          </div>
-         <div class="col-lg-2">
+         <div class="col-md-2 col-sm-2 col-xs-2">
          <%= link_to "See or do!", "SeeDo", :class => "btn btn-primary",:method => "put" %><br>
          </div>
-         <div class="col-lg-2">
+         <div class="col-md-2 col-sm-2 col-xs-2">
          <%= link_to "Anything!!", "All",:class => "btn btn-primary", :method => "put" %><br>
          </div>
     </div>
@@ -147,19 +149,19 @@
 
  
 
-    <div id="map-canvas"> </div>
+    <div id="map-canvas" class = ".col-xs-12 .col-sm-6 .col-md-8"> </div>
 
-    <div class="container-btn">
-      <div class="col-lg-3">
+    <div class="container-btn .col-xs-12 .col-sm-6 .col-md-8">
+      <div class="col-md-3 col-sm-2 col-xs-2">
         <%= link_to "I hate this place", 'places/button_no', :class => "btn btn-primary", :method => "put" %> <br>
       </div>
-      <div class="col-lg-3"> 
+      <div class="col-md-3 col-sm-2 col-xs-2"> 
         <%= link_to "Looks pretty alright~", "places/button_yes", :class => "btn btn-primary", :method => "put" %> <br>
       </div>
-      <div class="col-lg-3">
+      <div class="col-md-3 col-sm-2 col-xs-2">
         <%= link_to "Find me "+"somewhere like this!", "places/button_random", :class => "btn btn-primary", :method => "put"%> <br>
       </div>
-      <div class="col-lg-3">
+      <div class="col-md-3 col-sm-2 col-xs-2">
         <%= link_to "Restart algorithm", "places/reset", :class => "btn btn-primary", :method => "put"%> <br>
       </div>
     </div>
@@ -167,7 +169,7 @@
 </div>
 
     <!-- sidebar? -->
-  <ul class="col-sm-3 col-md-2 sidebar">
+  <ul class=".col-xs-3 .col-md-2 sidebar">
     <li class="list-group-item">Title</li>
     <li class="list-group-item"> <%= @place.loc %></li>
     <li class="list-group-item"> <%= image_tag @place.img %> </li>
