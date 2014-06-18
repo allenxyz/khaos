@@ -2,8 +2,8 @@ class Place < ActiveRecord::Base
 	belongs_to :rec
 	has_and_belongs_to_many :tags
 	
-	geocoded_by :loc
-	after_validation :geocode, :if => :loc_changed?
+	geocoded_by :full_address
+	after_validation :geocode, :if => :full_address_changed?
 
 	has_many :events
 
