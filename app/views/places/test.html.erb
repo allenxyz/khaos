@@ -1,63 +1,191 @@
-
-<!-- 
-<head>
-<script type="text/javascript" language="javascript" src="http://api.afrigis.co.za/loadjsapi/?key=5622474105567710288882020469246683119388024151&version=2.6"> </script>
-
-	<script type="text/javascript" language="JavaScript">
-		var agmap = null;
-		function initAGMap() {
-			agmap = new AGMap(document.getElementById("MapPanel"));
-			agmap.centerAndScale(new AGCoord(-25.7482681540537, 28.225935184269), 5);
-		}
-	</script>
-</head>
-
-
-
-<body onload="initAGMap()">
-
-<div id="MapPanel" styple="width:400px;height:300px;border:1px solid black"></div>
-
-
-
-
-</body> -->
-
-
-
-
-
-
-<!DOCTYPE html>
 <html>
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+    <!-- style of map, to be put in /stylesheets --> 
     <style type="text/css">
       html { height: 100% }
       body { height: 100%; margin: 0; padding: 0 }
-      #map-canvas { height: 100% }
+      #map-canvas { height: 68%; width: 95%; margin-top: 0px; margin-bottom: 0; margin-left: 3%; margin-right: 3%; padding: 0; }
+
+      #panel {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+      }
     </style>
+    
+    <!-- loading Google Maps API, javascript -->
+    <!-- add additional libraries to the API! -->
     <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=#{API_KEY}">
     </script>
+
+    <!-- to be called for loading on demand if wanted-->
+    <!-- to load lang and lat -->
     <script type="text/javascript">
+      var directionsDisplay;
+      var directionsService = new google.maps.DirectionsService();
+      var map;
+
+      // var origin = new google.maps.LatLng(-33.924868, 18.424055);
+      // var destination = new google.maps.LatLng(-33.924868, 19.424055);
+      var origin = new google.maps.LatLng(<%= @user.latitude %>, <%=@user.longitude%>);
+      var destination = new google.maps.LatLng(<%=@place.latitude%>, <%=@place.longitude%>);
+
       function initialize() {
+
+        directionsDisplay = new google.maps.DirectionsRenderer();
         var mapOptions = {
-          center: new google.maps.LatLng(-34.397, 150.644),
-          zoom: 8
-        };
-        var map = new google.maps.Map(document.getElementById("map-canvas"),
-            mapOptions);
+          zoom: 14,\
+          center: origin
+        }
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        directionsDisplay.setMap(map);
+        calcRoute();
       }
+
+      function calcRoute() {
+        //var selectedMode = document.getElementById('mode').value;
+        var request = {
+            origin: origin,
+            destination: destination,
+            // Note that Javascript allows us to access the constant
+            // using square brackets and a string value as its
+            // "property."
+
+            travelMode: google.maps.TravelMode.WALKING
+        };
+        directionsService.route(request, function(response, status) {
+          if (status == google.maps.DirectionsStatus.OK) {
+            alert("Loading!")
+            directionsDisplay.setDirections(response);
+          }
+          else {
+            puts status
+            puts response
+            alert("Error: Something went wrong with the locations");
+          }
+        });
+      }
+
+      alert("here")
       google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+    </script>  
+
+    <div id="panel">
+    <b>Mode of Travel: </b>
+    <select id="mode" onchange="calcRoute();">
+      <option value="DRIVING">Driving</option>
+      <option value="WALKING">Walking</option>
+      <option value="BICYCLING">Bicycling</option>
+      <option value="TRANSIT">Transit</option>
+    </select>
+    </div>
   </head>
+
+
   <body>
-    <div id="map-canvas"/>
+  <b>
+    <% if flash[:success] %>
+      <%= flash[:success] %>
+    <% end %>
+    <% if flash[:error] %>
+      <%= flash[:error] %>
+    <% end %>
+  </b>
+
+
+
+  <div class="container-main">
+      <div class="loc">
+        <p>
+        Your current location is 
+        <%= @user.curloc %>
+        <%= link_to "(Wrong?)", root_path %>
+        </p>
+      </div>
+
+     <p>Your reccomended place to go: <%= @place.loc %>, <%= @place.address %></p>
+      
+
+    <div class="container-filter .col-xs-12 .col-sm-6 .col-md-8">
+        <div class="col-md-2 col-sm-2 col-xs-2">
+           <p>Find me a place to :</p>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+         <%= link_to "Feed me!", "FeedMe", :class => "btn btn-primary",:method => "put"%> <br>
+         </div>
+         <div class="col-md-2 col-sm-2 col-xs-2">
+         <%= link_to "Grab a drink!", "Drink", :class => "btn btn-primary",:method => "put" %><br>
+         </div>
+         <div class="col-md-2 col-sm-2 col-xs-2">
+         <%= link_to "Shop!", "Shop", :class => "btn btn-primary",:method => "put" %><br>
+         </div>
+         <div class="col-md-2 col-sm-2 col-xs-2">
+         <%= link_to "See or do!", "SeeDo", :class => "btn btn-primary",:method => "put" %><br>
+         </div>
+         <div class="col-md-2 col-sm-2 col-xs-2">
+         <%= link_to "Anything!!", "All",:class => "btn btn-primary", :method => "put" %><br>
+         </div>
+    </div>
+
+
+
+
+
+  <!-- 
+      <hr>
+          <div id="panel">
+          <b>Mode of Travel: </b>
+          <select id="mode">
+            <option value="DRIVING">Driving</option>
+            <option value="WALKING">Walking</option>
+            <option value="BICYCLING">Bicycling</option>
+            <option value="TRANSIT">Transit</option>
+          </select>
+          </div>
+   -->
+
+
+
+    <div id="map-canvas" class = ".col-xs-12 .col-sm-6 .col-md-8" onload="calcRoutes()"> </div>
+
+
+
+      <div class="container-btn .col-xs-12 .col-sm-6 .col-md-8">
+        <div class="col-md-3 col-sm-2 col-xs-2">
+          <%= link_to "I hate this place", 'places/button_no', :class => "btn btn-primary", :method => "put" %> <br>
+        </div>
+        <div class="col-md-3 col-sm-2 col-xs-2"> 
+          <%= link_to "Looks pretty alright~", "places/button_yes", :class => "btn btn-primary", :method => "put" %> <br>
+        </div>
+        <div class="col-md-3 col-sm-2 col-xs-2">
+          <%= link_to "Find me "+"somewhere like this!", "places/button_random", :class => "btn btn-primary", :method => "put"%> <br>
+        </div>
+        <div class="col-md-3 col-sm-2 col-xs-2">
+          <%= link_to "Restart algorithm", "places/reset", :class => "btn btn-primary", :method => "put"%> <br>
+        </div>
+      </div>
+
+    </div>
+
+      <!-- sidebar? -->
+    <ul class=".col-xs-3 .col-md-2 sidebar">
+      <li class="list-group-item">Title</li>
+      <li class="list-group-item"> <%= @place.loc %></li>
+      <li class="list-group-item"> <%= image_tag @place.img %> </li>
+      <li class="list-group-item">Description</li>
+      <li class="list-group-item"> <%= link_to @place.url, @place.url, :target => "_blank" %></li>
+    </ul>
   </body>
+
 </html>
-
-
 
 
 

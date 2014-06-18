@@ -12,7 +12,7 @@ class PlacesController < ApplicationController
 			a.aff -= 1 if a.aff > 1
 			a.save
 		end
-		redirect_to '/index'
+		redirect_to '/find'
 	end
 
 	def button_yes
@@ -23,12 +23,12 @@ class PlacesController < ApplicationController
 			a.aff += 1 
 			a.save
 		end
-		redirect_to	"/index"
+		redirect_to	"/find"
 	end
 
 
 	def button_random
-		redirect_to "/index"
+		redirect_to "/find"
 	end
 
 	def reset
@@ -41,12 +41,12 @@ class PlacesController < ApplicationController
 			a.aff = 5
 			a.save
 		end
-		redirect_to "/index"
+		redirect_to "/find"
 	end
 
 
-	
-	def index
+
+	def find
 		@user = User.find_by(:name => session[:user_id])
 
 
@@ -65,6 +65,14 @@ class PlacesController < ApplicationController
 
 			@user.recs << rec
 		end
+		redirect_to "/index"
+	end
+	
+	def index
+		ip = request.remote_ip
+		puts "sldkjfalkdsf #{ip}"
+		@user = User.find_by(:name => session[:user_id])
+		@place = @user.recs.last.place
 	end
 
 	def feed
@@ -99,6 +107,8 @@ class PlacesController < ApplicationController
 	end
 
 	def test
+		@user = User.find_by(:name => session[:user_id])
+		@place = @user.recs.last.place
 
 	end
 

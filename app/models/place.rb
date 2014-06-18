@@ -90,5 +90,34 @@ class Place < ActiveRecord::Base
 	end
 
 
+
+
+	def self.list_tags(place)
+		retval = ""
+		place.tags.each	 do |tag|	
+			next if ((tag.tag == "money_0") || (tag.tag == "money_1") || (tag.tag == "money_2") || (tag.tag == "money_3") || (tag.tag == "money_4"))
+			retval += tag.tag + ", "
+		end
+		puts retval
+		return retval[0..(retval.length-3)]
+	end
+
+
+
+	def self.find_price(place)
+		dollar = 0
+		place.tags.reverse.each do |tag|
+			if (tag.tag == "money_0") || (tag.tag == "money_1") || (tag.tag == "money_2") || (tag.tag == "money_3") || (tag.tag == "money_4")
+				dollar = tag.tag[tag.tag.length - 1].to_i
+				break
+			end
+		end
+
+		retval = ""
+		(dollar + 1).times {retval += "$"}
+		puts retval
+		return retval
+	end
+
 end
 

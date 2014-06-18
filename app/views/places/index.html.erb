@@ -168,10 +168,10 @@
 
     <!-- sidebar? -->
   <ul class=".col-xs-3 .col-md-2 sidebar">
-    <li class="list-group-item">Title</li>
     <li class="list-group-item"> <%= @place.loc %></li>
     <li class="list-group-item"> <%= image_tag @place.img %> </li>
-    <li class="list-group-item">Description</li>
+    <li class="list-group-item"><%= Place.list_tags(@place) %></li>
+    <li class="list-group-item"> Price: <%= Place.find_price(@place) %> (5 max.) </li>
     <li class="list-group-item"> <%= link_to @place.url, @place.url, :target => "_blank" %></li>
   </ul>
 </body>

@@ -14,10 +14,13 @@
 		<h1 class='title'>Welcome to Khaos</h1>
 		<hr align="center" width="50%">
 		<p class="prompt">Please enter your location here!</p>
+
 		<%= form_for(@input, url:'users/create', method: 'post') do |f|%>
 			<%= f.text_field :curloc %>
 			<%= f.submit "Find Me!" %>
 		<% end %>
+		
+		<%= link_to "JUST FIND ME ALREADY!", "findMe", :method => "post" %> <br>
 	</div>
 
 </div>
