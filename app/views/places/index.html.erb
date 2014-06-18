@@ -5,7 +5,18 @@
     <style type="text/css">
       html { height: 100% }
       body { height: 100%; margin: 0; padding: 0 }
-      #map-canvas { height: 70%; width: 95%; margin-top: 0; margin-bottom: 0; margin-left: 3%; margin-right: 3%; padding: 0; }
+      #map-canvas { height: 68%; width: 95%; margin-top: 0px; margin-bottom: 0; margin-left: 3%; margin-right: 3%; padding: 0; }
+
+      #panel {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+      }
     </style>
     
     <!-- loading Google Maps API, javascript -->
@@ -17,13 +28,62 @@
     <!-- to be called for loading on demand if wanted-->
     <!-- to load lang and lat -->
     <script type="text/javascript">
+      // function initialize() {
+      //   var mapOptions = {
+      //     // center: {lat: -33.924868, lng: 18.424055}, 
+      //     center: {lng: <%=@place.longitude%>, lat: <%=@place.latitude%>},
+      //     zoom: 8
+      //   };
+      //   var map = new google.maps.Map(document.getElementById("map-canvas"),
+      //       mapOptions);
+      // }
+      // google.maps.event.addDomListener(window, 'load', initialize);
+
+      // function loadScript() {
+      //   var script = document.createElement('script');
+      //   script.type = 'text/javascript';
+      //   script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
+      //       'callback=initialize';
+      //   document.body.appendChild(script);
+      // }
+
+      // window.onload = loadScript;
+      var directionsDisplay;
+      var directionsService = new google.maps.DirectionsService();
+      var map;
+
+      var height = new google.maps.LatLng(-33.924868, 18.424055);
+      var oceanBeach = new google.maps.LatLng(-33.924868, 19.424055);
+      // var height = new google.maps.LatLng(@user.latitude, @user.longitude);
+      // var oceanBeach = new google.maps.LatLng(@user.latitude, @place.longitude);
+
       function initialize() {
+
+        directionsDisplay = new google.maps.DirectionsRenderer();
         var mapOptions = {
           center: new google.maps.LatLng(-33.9248685, 18.4240553), 
-          zoom: 11
+          zoom: 14,
+          center: height
+        }
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        directionsDisplay.setMap(map);
+      }
+
+      function calcRoute() {
+        var selectedMode = document.getElementById('mode').value;
+        var request = {
+            origin: height,
+            destination: oceanBeach,
+            // Note that Javascript allows us to access the constant
+            // using square brackets and a string value as its
+            // "property."
+            travelMode: google.maps.TravelMode[selectedMode]
         };
-        var map = new google.maps.Map(document.getElementById("map-canvas"),
-            mapOptions);
+        directionsService.route(request, function(response, status) {
+          if (status == google.maps.DirectionsStatus.OK) {
+            directionsDisplay.setDirections(response);
+          }
+        });
       }
 
       var DirectionsRequest = {
@@ -69,46 +129,57 @@
    <p>Your reccomended place to go: <%= @place.loc %>, <%= @place.address %> (<%= @place.longitude %>, <%= @place.latitude %>)</p>
     
 
-        <div class="container-filter">
-            <div class="col-lg-3">
-               <p>Find me a place to :</p>
-            </div>
-            <div class="col-lg-2">
-             <%= link_to "Feed me!", "FeedMe", :class => "btn btn-primary",:method => "put"%> <br>
-             </div>
-             <div class="col-lg-2">
-             <%= link_to "Grab a drink!", "Drink", :class => "btn btn-primary",:method => "put" %><br>
-             </div>
-             <div class="col-lg-1">
-             <%= link_to "Shop!", "Shop", :class => "btn btn-primary",:method => "put" %><br>
-             </div>
-             <div class="col-lg-2">
-             <%= link_to "See or do!", "SeeDo", :class => "btn btn-primary",:method => "put" %><br>
-             </div>
-             <div class="col-lg-2">
-             <%= link_to "Anything!!", "All",:class => "btn btn-primary", :method => "put" %><br>
-             </div>
+    <div class="container-filter">
+        <div class="col-lg-3">
+           <p>Find me a place to :</p>
         </div>
-
-        <hr>
-
-        <div id="map-canvas"> </div>
-
-        <div class="container-btn">
-          <div class="col-lg-3">
-            <%= link_to "I hate this place", 'places/button_no', :class => "btn btn-primary", :method => "put" %> <br>
-          </div>
-          <div class="col-lg-3"> 
-            <%= link_to "Looks pretty alright~", "places/button_yes", :class => "btn btn-primary", :method => "put" %> <br>
-          </div>
-          <div class="col-lg-3">
-            <%= link_to "Find me "+"somewhere like this!", "places/button_random", :class => "btn btn-primary", :method => "put"%> <br>
-          </div>
-          <div class="col-lg-3">
-            <%= link_to "Restart algorithm", "places/reset", :class => "btn btn-primary", :method => "put"%> <br>
-          </div>
-        </div>
+        <div class="col-lg-2">
+         <%= link_to "Feed me!", "FeedMe", :class => "btn btn-primary",:method => "put"%> <br>
+         </div>
+         <div class="col-lg-2">
+         <%= link_to "Grab a drink!", "Drink", :class => "btn btn-primary",:method => "put" %><br>
+         </div>
+         <div class="col-lg-1">
+         <%= link_to "Shop!", "Shop", :class => "btn btn-primary",:method => "put" %><br>
+         </div>
+         <div class="col-lg-2">
+         <%= link_to "See or do!", "SeeDo", :class => "btn btn-primary",:method => "put" %><br>
+         </div>
+         <div class="col-lg-2">
+         <%= link_to "Anything!!", "All",:class => "btn btn-primary", :method => "put" %><br>
+         </div>
     </div>
+
+    <hr>
+
+    <div id="panel">
+    <b>Mode of Travel: </b>
+    <select id="mode" onchange="calcRoute();">
+      <option value="DRIVING">Driving</option>
+      <option value="WALKING">Walking</option>
+      <option value="BICYCLING">Bicycling</option>
+      <option value="TRANSIT">Transit</option>
+    </select>
+    </div>
+
+    <div id="map-canvas"> </div>
+
+    <div class="container-btn">
+      <div class="col-lg-3">
+        <%= link_to "I hate this place", 'places/button_no', :class => "btn btn-primary", :method => "put" %> <br>
+      </div>
+      <div class="col-lg-3"> 
+        <%= link_to "Looks pretty alright~", "places/button_yes", :class => "btn btn-primary", :method => "put" %> <br>
+      </div>
+      <div class="col-lg-3">
+        <%= link_to "Find me "+"somewhere like this!", "places/button_random", :class => "btn btn-primary", :method => "put"%> <br>
+      </div>
+      <div class="col-lg-3">
+        <%= link_to "Restart algorithm", "places/reset", :class => "btn btn-primary", :method => "put"%> <br>
+      </div>
+    </div>
+
+</div>
 
     <!-- sidebar? -->
   <ul class="col-sm-3 col-md-2 sidebar">
@@ -118,7 +189,7 @@
     <li class="list-group-item">Description</li>
     <li class="list-group-item"> <%= link_to @place.url, @place.url, :target => "_blank" %></li>
   </ul>
-
+</body>>
 
 
 
