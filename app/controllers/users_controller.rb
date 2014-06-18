@@ -27,8 +27,6 @@ class UsersController < ApplicationController
 				puts session[:user_id]
 			end while (@user = User.find_by(:name => session[:user_id]))
 
-			puts session[:user_id]
-
 			@user = User.create(:name => session[:user_id], :curloc => curloc)
 			
 			#create all the tags that are related to the user
@@ -50,7 +48,6 @@ class UsersController < ApplicationController
 			end
 			#############################     DO THIS WHEN YOU KNOW HOW THE THING WORKS!!!
 		end
-		binding.pry
 		redirect_to "/index"
 
 	end
