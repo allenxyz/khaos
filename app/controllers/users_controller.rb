@@ -24,6 +24,8 @@ class UsersController < ApplicationController
 				session[:user_id] = (0...8).map { (65 + rand(26)).chr }.join  
 			end
 
+			puts session[:user_id]
+
 			@user = User.create(:name => session[:user_id], :curloc => curloc)
 			
 			#create all the tags that are related to the user
