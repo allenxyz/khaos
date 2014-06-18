@@ -3,13 +3,58 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import url(http://fonts.googleapis.com/css?family=Lobster);
 
-html, body{
+.sec_title {
+	font-family: 'Lobster';
+}
+
+
+.container_about {
+	margin: 0;
+	padding: 100px;
+	text-align: justify, center;
+	opacity: 0.9;
+}
+
+.section1, .section2, .section3 {
+	background-color: #efefef;
+	padding: 20px;
+}
+
+.section1 {
+	border-top-left-radius: 2em;
+	border-top-right-radius: 2em;
+}
+
+.section3 {
+	border-bottom-left-radius: 2em;
+	border-bottom-right-radius: 2em;
+}
+
+ul, li {
+	position: center;
+	text-align: center;
+	list-style-position: inside;
+}
+
+
+img {
+	height: 150px;
+	width: 150px;
+	position: center;
+	margin: auto;
+	padding: 10px;
+}
+
+
+body{
+	background: url(background1.jpg) no-repeat center center fixed;
+	background-size: cover;
 	text-align: center;
 	margin: 0;
 	padding: 0;
 	height: 100%;
 	width: 100%;
-	overflow: hidden;
+	overflow: auto;
 
 }
 

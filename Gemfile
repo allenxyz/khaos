@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+
+gem 'pry'
+gem 'pry-remote'
+gem 'pry-stack_explorer'
+
 #gem "Google-Maps-for-Rails"
 gem "unicorn"
 gem 'bootstrap-sass'

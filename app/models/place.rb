@@ -50,7 +50,6 @@ class Place < ActiveRecord::Base
 
 		possible_place = Place.find_contains(tags)
 		been_to = user.recs.map {|rec| rec.place}
-		puts "ASDF #{possible_place} \n\n\n user: #{user.name}"
 
 		#remove those that you have been to before
 

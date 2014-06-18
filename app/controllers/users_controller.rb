@@ -1,3 +1,4 @@
+
 class UsersController < ApplicationController
 	def new
 		@input = User.new
@@ -20,9 +21,13 @@ class UsersController < ApplicationController
 			
 
 			#create random length 8 string - until you find one that's unused
-			while (@user = User.find_by(:name => session[:user_id]))
+			begin 
+				puts "making a new name"
 				session[:user_id] = (0...8).map { (65 + rand(26)).chr }.join  
-			end
+				puts session[:user_id]
+			end while (@user = User.find_by(:name => session[:user_id]))
+
+			puts session[:user_id]
 
 			@user = User.create(:name => session[:user_id], :curloc => curloc)
 			
@@ -45,7 +50,7 @@ class UsersController < ApplicationController
 			end
 			#############################     DO THIS WHEN YOU KNOW HOW THE THING WORKS!!!
 		end
-
+		binding.pry
 		redirect_to "/index"
 
 	end
