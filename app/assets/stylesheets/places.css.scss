@@ -13,9 +13,9 @@
 }
 
 .container-main{
-	width:980px;
+	width:1000px;
 	height:600px;
-	text-align: center;
+	margin: 1% 1%;
 }
 
 hr{
@@ -36,14 +36,17 @@ hr{
 	height:32px;
 }
 
-.map-canvas{
-	text-align: center;
+
+#map-canvas {
+height: 68%;
+width: 95%;
+margin-top: 0px;
+margin-bottom: 0;
+margin-left: auto;
+margin-right: auto;
+padding: 0;
 }
 
-.sidebar{
-	position: absolute;
-	padding: 0px 0px;
-	margin:0;
-}
+
 
 
