@@ -33,6 +33,9 @@ class PlacesController < ApplicationController
 
 	def reset
 		@user = User.find_by(:name => session[:user_id])
+
+		@user.recs.each {|rec| rec.destroy }
+
 		@user.tags.each do |tag|	
 			a = tag.affinity
 			a.aff = 5
