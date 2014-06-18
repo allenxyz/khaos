@@ -69,7 +69,7 @@ class PlacesController < ApplicationController
 	end
 	
 	def index
-		ip = request.remote_ip
+
 		puts "sldkjfalkdsf #{ip}"
 		@user = User.find_by(:name => session[:user_id])
 		@place = @user.recs.last.place

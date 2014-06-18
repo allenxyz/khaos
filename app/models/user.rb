@@ -3,5 +3,4 @@ class User < ActiveRecord::Base
 	geocoded_by :curloc
 
 	has_many :tags
-
 end

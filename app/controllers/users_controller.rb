@@ -6,24 +6,14 @@ class UsersController < ApplicationController
 
 	def find
 		ip = request.remote_ip
-		if !(@user = find_by(:name => session[:user_id]))
-
-
-		else
-
-		end
-		
-
+		create_new(ip)
 
 	end
 
 
 	def create
 		curloc = params[:user][:curloc]	
-
 		create_new(curloc)
-	
-		redirect_to "/find"
 
 	end
 
@@ -44,7 +34,7 @@ class UsersController < ApplicationController
 			#create random length 8 string - until you find one that's unused
 			begin 
 				puts "making a new name"
-				session[:user_id] = (0...8).map { (65 + rand(26)).chr }.join  
+				session[:user_id] = (0...8).map { (65 + rand(26)).chr }.join 
 				puts session[:user_id]
 			end while (@user = User.find_by(:name => session[:user_id]))
 
@@ -69,6 +59,7 @@ class UsersController < ApplicationController
 			end
 			#############################     DO THIS WHEN YOU KNOW HOW THE THING WORKS!!!
 		end
+		redirect_to "/find"
 
 	end
 
