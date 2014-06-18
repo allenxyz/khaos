@@ -9,6 +9,7 @@
 	position:fixed;
 /*	background-color: #9CF;	*/
 	color: #FFF000;
+	background-image: url(/images/background1.jpg);
 
 }
 
@@ -16,6 +17,7 @@
 	width:1000px;
 	height:600px;
 	margin: 1% 1%;
+	text-align: center;
 }
 
 hr{
@@ -38,13 +40,19 @@ hr{
 
 
 #map-canvas {
-height: 68%;
-width: 95%;
-margin-top: 0px;
-margin-bottom: 0;
-margin-left: auto;
-margin-right: auto;
-padding: 0;
+	height: 68%;
+	width: 95%;
+	margin-top: 0px;
+	margin-bottom: 0;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0;
+}
+
+.btn-primary {
+color: white;
+background-color: #428bca;
+border-color: #357ebd;
 }
 
 
