@@ -49,10 +49,6 @@ class PlacesController < ApplicationController
 	def index
 		@user = User.find_by(:name => session[:user_id])
 
-		# @place = Place.find(162)
-
-
-
 
 		if !(@place = Place.find_rec_place(session))
 			flash[:error] = "Ran out of good locations - We'll try to find more places! In the meantime, Please try again"
