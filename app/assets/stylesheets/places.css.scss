@@ -17,8 +17,8 @@
 	width:900px;
 	height:600px;
 	margin: auto;
-
-
+	margin-right: auto + 20%;
+	text-align: center;
 }
 
 hr{
@@ -50,13 +50,13 @@ hr{
 }
 
 .btn-primary {
-color: white;
-background-color: #428bca;
-border-color: #357ebd;
+	color: white;
+	background-color: #428bca;
+	border-color: #357ebd;
 }
 
 
 ul[class=".col-xs-3 .col-md-2 sidebar"] {
 	width: 20%;
+	margin: auto;
 }
-
