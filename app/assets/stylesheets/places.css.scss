@@ -16,12 +16,13 @@
 .container-main{
 	width:1000px;
 	height:600px;
-	margin: 1% 1%;
-	text-align: center;
+	margin: auto;
+
+
 }
 
 hr{
-	boader: 0;
+	border: 0;
 	border-bottom: 1px dashed #ccc;
 	background: #999;
 }
@@ -56,5 +57,6 @@ border-color: #357ebd;
 }
 
 
-
-
+ul[class=".col-xs-3 .col-md-2 sidebar"] {
+	width: 20%;
+}

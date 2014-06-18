@@ -24,6 +24,8 @@ class UsersController < ApplicationController
 				session[:user_id] = (0...8).map { (65 + rand(26)).chr }.join  
 			end
 
+			puts session[:user_id]
+
 			@user = User.create(:name => session[:user_id], :curloc => curloc)
 			
 			#create all the tags that are related to the user
@@ -33,11 +35,11 @@ class UsersController < ApplicationController
 				a.affinity = Affinity.create(:aff => 5)
 			end
 
-			puts "MAKING A NEW USER WTF?"
+			puts "MAKING a new user!!!"
 			@user.geocode
 			@user.save
 		else
-			puts "NOT MAKING A NEW USER T.T..................."
+			puts "NOT making a new user"
 			if curloc != @user.curloc
 				@user.curloc = curloc
 				@user.geocode
