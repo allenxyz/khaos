@@ -3,41 +3,65 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import url(http://fonts.googleapis.com/css?family=Lobster);
 
+html, body{
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
 
-
-body{
-	text-align: center
 }
 
-
-.video {
+.container {
+	position: center;
 	text-align: center;
 }
 
-video#videohome, video#video-capabilities {
-position: fixed;
-z-index: -9999;
-margin-top: -10%;
-height: 100%;
-width: 100% ;
-
+hr {
+	border: 20px solid #e9edef;
+	position: center;
 }
 
-.hidden-sm {
-display: block!important;
+.texture {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	display: block;
+	background: url('texture.jpg');
+	background-repeat: no-repeat;
+	margin: 0px;
+	z-index: -10;
 }
 
 .video {
+	text-align: center;
 	object-fit: contain;
 }
 
+video#videohome, video#video-capabilities {
+	position: absolute;
+	z-index: -9999;
+	margin-top: 0px;
+	margin-left: 0px;
+	min-width: 100%;
+	min-height: 100%;
+	height: auto;
+	width: auto;
+	overflow: hidden;
+}
+
+.hidden-sm {
+	display: block!important;
+}
+
 .title, .prompt{	
-	color: #FFF000;	
+	color: #e9edef;	
 	font-family:'Lobster', cursive;
 	text-align: center;
 }
 
-.title{
+.title {
 	font-size: 72px;
 	margin-top: 5%;
 }
@@ -45,16 +69,14 @@ display: block!important;
 .prompt{
 	font-size: 32px;
 	margin-top: 2%;
+	font-family: 'Lobster';
 }
 
-.inner-container.form{
-	text-align: center;
-}
 
 
 input[type=text] {padding:5px; border:2px solid #ccc; 
--webkit-border-radius: 5px;
-border-radius: 5px;
+	-webkit-border-radius: 7px;
+	border-radius: 5px;
 }
 
 input[type=text]:focus {
@@ -67,5 +89,6 @@ input[type=submit] {
 	border:0 none;
 	cursor:pointer;
 	-webkit-border-radius: 5px;
-	border-radius: 5px; 
+	border-radius: 7px; 
+	font-family: "Lobster";
 }

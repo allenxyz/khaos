@@ -1,23 +1,26 @@
-<!-- Header -->
-<!-- Body-->
-	<!-- Video -->
-<div class="video">	
-	<video id="videohome" class="hidden-xs hidden-sm" autoplay="true" loop="" muted="" style="height: 100%; width: 100%;">
+
+ <div class="texture visible-xs hidden-sm hidden-md hidden-lg"></div>
+
+<body>
+ <div class="video">	
+	<video id="videohome" class="hidden-xs visible-sm visible-md visible-lg" autoplay="true" loop="" muted="">
 		<source src="http://player.vimeo.com/external/90068336.hd.mp4?s=df933ea0ef031de9a80ddc2814f23d06" type="video/mp4">
 		<source src="/static/vid/electrik-web-bw.webmhd.webm" type="video/webm">
 		<source src="/static/vid/electrik-web-bw.oggtheora.ogv" type="ogv">
 	</video>
 </div>
 
-<div "container-new">
-	<!--  -->
-	<div "inner-container">
-		<h1 class="title">Welcome to Khaos</h1>
+<!-- <div "container-new col-xs-12 col-sm-12 col-md-12" > -->
+
+	<div class="container">
+		<h1 class='title'>Welcome to Khaos</h1>
+		<hr align="center" width="50%">
 		<p class="prompt">Please enter your location here!</p>
 		<%= form_for(@input, url:'users/create', method: 'post') do |f|%>
 			<%= f.text_field :curloc %>
 			<%= f.submit "Find Me!" %>
 		<% end %>
 	</div>
-<!-- Footer -->
+
 </div>
+</body>
