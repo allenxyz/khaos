@@ -51,11 +51,17 @@ class Place < ActiveRecord::Base
 		possible_place = Place.find_contains(tags)
 		been_to = user.recs.map {|rec| rec.place}
 
+		been_to.each {|been| puts been}
+
+		been_to_names = been_to.map {|place| Place.only_name(place.loc)} 
+
 		#remove those that you have been to before
 
 		possible_place.each_index do |index|
-			while been_to.include?(possible_place[index])
+			puts possible_place[index].loc
+			while been_to.include?(possible_place[index]) || been_to_names.include?(Place.only_name(possible_place[index].loc))
 				possible_place.delete_at(index)
+				break if !possible_place[index+1]
 			end
 		end
 
@@ -66,6 +72,15 @@ class Place < ActiveRecord::Base
 		return possible_place[rand(possible_place.length - 1)]
 
 
+	end
+
+
+	def self.only_name(loc)
+		if (cut = (loc.index('-')))
+			retval = loc[0..cut-1]  
+			return retval.strip
+		end
+		return loc
 	end
 
 
@@ -99,6 +114,10 @@ class Place < ActiveRecord::Base
 			retval += tag.tag + ", "
 		end
 		puts retval
+
+		#change all _ to spaces
+		retval.each_char {|char| char = " " if char == "_"}
+
 		return retval[0..(retval.length-3)]
 	end
 

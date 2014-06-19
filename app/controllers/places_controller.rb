@@ -147,6 +147,8 @@ class PlacesController < ApplicationController
 					a = Tag.create(:tag => "#{tag}", :user_id => user.id)
 					a.affinity = Affinity.create(:aff => 5)
 				end
+
+				user.recs.each {|rec| rec.destroy }	
 			end
 		end
 
