@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get 'index' => "places#index"
 
+  get 'test2' => "places#test2"
+
   put 'places/button_no' => 'places#button_no'
   put 'places/button_yes' => 'places#button_yes'
   put 'places/button_random' => 'places#button_random'
