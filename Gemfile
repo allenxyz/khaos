@@ -5,6 +5,8 @@ gem 'pry'
 gem 'pry-remote'
 gem 'pry-stack_explorer'
 
+gem 'rails_12factor', group: :production
+
 #gem "Google-Maps-for-Rails"
 gem "unicorn"
 gem 'bootstrap-sass'
@@ -47,6 +49,7 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
 
 
 

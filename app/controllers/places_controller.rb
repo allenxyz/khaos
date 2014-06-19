@@ -12,7 +12,7 @@ class PlacesController < ApplicationController
 			a.aff -= 1 if a.aff > 1
 			a.save
 		end
-		redirect_to '/index'
+		redirect_to '/find'
 	end
 
 	def button_yes
@@ -23,12 +23,12 @@ class PlacesController < ApplicationController
 			a.aff += 1 
 			a.save
 		end
-		redirect_to	"/index"
+		redirect_to	"/find"
 	end
 
 
 	def button_random
-		redirect_to "/index"
+		redirect_to "/find"
 	end
 
 	def reset
@@ -41,12 +41,12 @@ class PlacesController < ApplicationController
 			a.aff = 5
 			a.save
 		end
-		redirect_to "/index"
+		redirect_to "/find"
 	end
 
 
-	
-	def index
+
+	def find
 		@user = User.find_by(:name => session[:user_id])
 
 		if !(@place = Place.find_rec_place(session))
@@ -59,46 +59,55 @@ class PlacesController < ApplicationController
 			@place.tags.each do |tag|
 				puts "akljdfalskjflakfj: #{tag.tag}"
 				t = @user.tags.find_by(:tag => tag.tag)
+				next if t == nil
 				rec.tags << t
 			end
 
 
 			@user.recs << rec
 		end
+		redirect_to "/index"
+	end
+	
+	def index
+		@user = User.find_by(:name => session[:user_id])
+		@place = @user.recs.last.place
 	end
 
 	def feed
 		tags = %w[bar bakery cafe food restaurant money_0 money_1 money_2 money_3 money_4]
 		change_tags(tags, session[:user_id])
-		redirect_to '/index'
+		redirect_to '/find'
 	end
 
 	def drink
 		tags = %w[bar bakery cafe food liquor_store restaurant money_0 money_1 money_2 money_3 money_4]
 		change_tags(tags, session[:user_id])
-		redirect_to '/index'
+		redirect_to '/find'
 	end
 
 	def shop
 		tags = %w[art_gallery bicycle_store book_store clothing_store department_store jewelry_store liquor_store shopping_mall money_0 money_1 money_2 money_3 money_4]
 		change_tags(tags, session[:user_id])
-		redirect_to '/index'
+		redirect_to '/find'
 	end
 
 
 	def see
 		tags = %w[amusement_park aquarium beauty_salon bicycle_store book_store bowling_alley campground casi1 cemetery church city_hall courthouse establishment gym hindu_temple library mosque movie_theater museum night_club park place_of_worship rv_park shopping_mall school spa stadium synagogue university zoo money_0 money_1 money_2 money_3 money_4]
 		change_tags(tags, session[:user_id])
-		redirect_to '/index'
+		redirect_to '/find'
 	end
 
 	def all
 		tags =  %w[amusement_park aquarium art_gallery bakery bar beauty_salon bicycle_store book_store bowling_alley cafe campground casino cemetery church city_hall clothing_store courthouse department_store establishment food gym hindu_temple jewelry_store library liquor_store meal_delivery meal_takeaway mosque movie_theater museum night_club park place_of_worship restaurant rv_park shopping_mall school spa stadium synagogue university zoo]
 		change_tags(tags, session[:user_id])
-		redirect_to '/index'
+		redirect_to '/find'
 	end
 
 	def test
+		@user = User.find_by(:name => session[:user_id])
+		@place = @user.recs.last.place
 
 	end
 
