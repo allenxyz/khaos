@@ -122,11 +122,11 @@
               <%= link_to "Find me "+"somewhere like this!", "places/button_random", :method => "put" %>
             </button>
           </div>
-          <div class="btn-group">
+          <!-- <div class="btn-group">
             <button type="button" class="btn btn-default">
               <%= link_to "Restart algorithm", "places/reset", :method => "put" %>
             </button>
-          </div>
+          </div> -->
         </div>
 
     </div>
@@ -154,6 +154,13 @@
             <li><%= link_to "Anything!!", "All", :method => "put"%> </li>
           </ul>
         </div>
+      </li>
+      <li class="list-group-item">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default">
+              <%= link_to "Restart algorithm", "places/reset", :method => "put" %>
+            </button>
+          </div>
       </li>
     </ul>
 
