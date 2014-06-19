@@ -1,3 +1,27 @@
+<ul class="col-xs-3 col-md-2 sidebar">
+      <li class="list-group-item">Title</li>
+      <li class="list-group-item"> <%= @place.loc %></li>
+      <li class="list-group-item"> <%= image_tag @place.img %> </li>
+      <li class="list-group-item">Description</li>
+      <li class="list-group-item"> <%= link_to @place.url, @place.url, :target => "_blank" %></li>
+      <li class="list-group-item">
+      <!-- filter buttons -->
+        <div class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            Filter
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Feed me!", "FeedMe", :method => "put"%> </li>
+            <li><%= link_to "Grab a drink!", "Drink", :method => "put"%> </li>
+            <li><%= link_to "Shop!", "Shop", :method => "put"%> </li>
+            <li><%= link_to "See or do!", "SeeDo", :method => "put"%> </li>
+            <li><%= link_to "Anything!!", "All", :method => "put"%> </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+
 <div class="container-main col-xs-18 col-sm-10 col-md-10" >
     <div class="loc">
       <p>
