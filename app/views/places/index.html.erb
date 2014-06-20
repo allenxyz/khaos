@@ -137,8 +137,7 @@
       <li class="list-group-item"> <%= image_tag @place.img %> </li>
       <li class="list-group-item"> <strong>Price level:</strong> <br> <%= Place.find_price(@place) %> (5 max)</li>
       <li class="list-group-item">
-        <% @place.url = "" if @place.url == "/" %>
-        <%= link_to @place.url, @place.url, :target => "_blank" %>
+        <%= link_to Place.find_url(@place.url), @place.url, :target => "_blank" %>
        </li>
 
       <li class="list-group-item">

@@ -52,8 +52,12 @@ class Place < ActiveRecord::Base
 		been_to = user.recs.map {|rec| rec.place}
 
 		been_to.each {|been| puts been}
+		puts session[:user_id]
 
-		been_to_names = been_to.map {|place| Place.only_name(place.loc)} 
+		been_to_names = been_to.map do |place| 
+			Place.only_name(place.loc)
+		end
+
 
 		#remove those that you have been to before
 
@@ -138,6 +142,16 @@ class Place < ActiveRecord::Base
 		puts retval
 		return retval
 	end
+
+	def self.find_url(url)
+		return "" if url.empty?
+		if url.length >= 27
+			return url[0..27] + "..."
+		end
+
+
+	end
+
 
 end
 
