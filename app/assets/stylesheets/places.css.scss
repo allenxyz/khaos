@@ -2,26 +2,66 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import url(http://fonts.googleapis.com/css?family=Lobster);
+@import url(http://fonts.googleapis.com/css?family=Arvo|Francois+One);
 
 
 
-.body {
-	position:fixed;
-	background-image: url(/images/background1.jpg);
+body {
+	background-color: #EFEFEF;
 
+	/*background-image: url("background1.jpg");*/
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+span[class="underline"] {
+	border-bottom: 5px solid yellow;
+}
+
+
+
+
+span[class="bold"] {
+	font-size: 1.8em;
+	font-weight: bold;
+}
+
+
+.text {
+	p{
+		font-size: 0.8em;
+		font-weight: bold;
+	}
 }
 
 .container-main{
 	width:900px;
-	height:550px;
+	height:100%;
 	margin: auto;
-	margin-top: 10px;
+
 	margin-bottom: 10px;
-	margin-right: auto + 20%;
+	margin-right: auto;
 	text-align: center;
-	p{
-		font-size: 16px;
-		font-weight: bold;
+	text-transform: uppercase;
+
+
+	.underline {}
+
+	.loc {
+		p {
+			padding-top: 0.5em;
+			font-size: 0.8em;
+			text-align: left;
+			color: #AAA;
+			text-transform: none;
+		}
+
+	}
+	p {
+		font-family: "Francois One", sans-serif;
+		color: white;
 	}
 }
 
@@ -57,7 +97,7 @@ hr{
 
 #map-canvas {
 	height: 68%;
-	width: 95%;
+	width: 100%;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	margin-left: auto;
@@ -70,7 +110,6 @@ hr{
 }
 
 .sidebar{
-	position: fixed;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	vertical-align: center;
@@ -109,7 +148,103 @@ ul[class=".col-xs-3 .col-md-2 sidebar"] {
 
 .btn-group{
 	a:link { 
-  color: #333333;
+  		color: #222;
+	}
 }
 
+button[class="btn btn-default"] {
+	height: 3em;
+	padding: 0px;
+	font-family: "Francois One", sans-serif;
+	text-transform: uppercase;
+	font-size: 1.5em;
+	a {
+		text-decoration: none;
+		font-color:black;
+	}
+	a:link { 
+  		color: #000;
+	}	
+	a:visited { 
+	  color: #000;
+	}
+	a:hover { 
+	  background-color: #EFEFEF;
+	}
+	a:active { 
+	  color: #000;
+	}
+}
+button[class="btn btn-default"]:hover{
+	background-color: #EFEFEF;
+}
+
+.restart {
+	font-size: 0.1em;
+}
+
+
+
+
+
+ul[class="col-xs-3 col-md-2 sidebar"] {
+	font-family: "Francois One", sans-serif;
+	font-size: 1.2em;
+}
+
+
+div.filter, div.restart {
+	width: 100%;
+	margin: none;
+	.filter_drop {}
+	.filter_drop {
+		padding: none;
+		font-family: "Francois One", sans-serif;
+		font-size: 1.2em;
+		width: 100%;
+		height: 100%;
+		margin-top: 0px;
+		margin-bottom: 5px;
+	}
+}
+
+.restart_li {
+	height: 84px;
+}
+.restart {
+	height: 100%;
+	padding-bottom: 10px;
+}
+
+
+.restart_btn {
+	width: 100%;
+	height: 80%;
+	font-family: "Francois One", sans-serif;
+	margin-bottom: 5px;
+	padding: none;
+	a {}
+	a:link { 
+  		color: #000;
+	}	
+	a:visited { 
+	  color: #000;
+	}
+	a:hover { 
+	  background-color: red;
+	}
+	a:active { 
+	  color: #000;
+	}
+}
+
+button[class="restart_btn"]:hover {
+	background-color: red;
+}
+
+
+
+.sidebar {
+	margin-top: 1.2em;
+	margin-right: 0.3em;
 }

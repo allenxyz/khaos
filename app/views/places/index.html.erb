@@ -7,7 +7,6 @@
       body { height: 100%; 
         margin: 0; 
         padding: 0;
-        background-image: url(/images/background1.jpg);}
       #map-canvas { height: 68%; width: 95%; margin-top: 0px; margin-bottom: 0; margin-left: 3%; margin-right: 3%; padding: 0; }
 
       #panel {
@@ -81,7 +80,7 @@
 
 
 
-  <body>
+  <body background="../../assets/background1.jpg">
     <b>
       <% if flash[:success] %>
         <%= flash[:success] %>
@@ -100,8 +99,8 @@
           </p>
         </div>
 
-       <p>Your reccomended place to go: <%= @place.loc %>, <%= @place.address %></p>
-
+       
+        <p>Your reccomended place to go: <span class="underline"><span class="bold"> <%= @place.loc %>, <%= @place.address %> </strong></span> </p>
 <!-- Map -->
         <div id="map-canvas" class = "col-md-10"> </div>
 
@@ -119,7 +118,7 @@
           </div>
           <div class="btn-group">
             <button type="button" class="btn btn-default">
-              <%= link_to "Find me "+"somewhere like this!", "places/button_random", :method => "put" %>
+              <%= link_to "Find me somewhere like this!", "places/button_random", :method => "put" %>
             </button>
           </div>
           <!-- <div class="btn-group">
@@ -133,16 +132,19 @@
 
 <!-- Sidebar -->
     <ul class="col-xs-3 col-md-2 sidebar">
-      <li class="list-group-item">Title</li>
-      <li class="list-group-item"> <%= @place.loc %></li>
+      <li class="list-group-item underline"> <%= @place.loc %></li>
+      <li class="list-group-item"> <strong> Types:</strong> <br><%= Place.list_tags(@place) %></li>
       <li class="list-group-item"> <%= image_tag @place.img %> </li>
-      <li class="list-group-item">Description</li>
-      <li class="list-group-item"> <%= link_to @place.url, @place.url, :target => "_blank" %></li>
+      <li class="list-group-item"> <strong>Price level:</strong> <%= Place.find_price(@place) %> (5 max)</li>
       <li class="list-group-item">
-      
+        <% @place.url = "" if @place.url == "/" %>
+        <%= link_to @place.url, @place.url, :target => "_blank" %>
+       </li>
+
+      <li class="list-group-item">
       <!-- filter buttons -->
-        <div class="btn-group">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        <div class="btn-group filter">
+          <button type="button" class="btn btn-default dropdown-toggle filter_drop" data-toggle="dropdown">
             Filter
             <span class="caret"></span>
           </button>
@@ -155,9 +157,10 @@
           </ul>
         </div>
       </li>
-      <li class="list-group-item">
-        <div class="btn-group">
-            <button type="button" class="btn btn-default">
+
+      <li class="list-group-item restart_li">
+        <div class="btn-group restart">
+            <button type="button" class="btn btn-default restart_btn">
               <%= link_to "Restart algorithm", "places/reset", :method => "put" %>
             </button>
           </div>

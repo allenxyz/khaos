@@ -111,7 +111,8 @@ class Place < ActiveRecord::Base
 		retval = ""
 		place.tags.each	 do |tag|	
 			next if ((tag.tag == "money_0") || (tag.tag == "money_1") || (tag.tag == "money_2") || (tag.tag == "money_3") || (tag.tag == "money_4"))
-			retval += tag.tag + ", "
+			add = tag.tag[0].upcase + tag.tag[1..-1]
+			retval += add + ", "
 		end
 		puts retval
 
