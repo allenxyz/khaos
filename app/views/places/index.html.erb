@@ -69,7 +69,7 @@
           else {
             console.log(respone);
             console.log(status);
-            alert("something went wrong with locating your dest");
+            alert("Error 404: something went wrong with locating your dest, please contact the programmer!");
           }
         });
       }
@@ -135,7 +135,7 @@
       <li class="list-group-item underline"> <%= @place.loc %></li>
       <li class="list-group-item"> <strong> Types:</strong> <br><%= Place.list_tags(@place) %></li>
       <li class="list-group-item"> <%= image_tag @place.img %> </li>
-      <li class="list-group-item"> <strong>Price level:</strong> <%= Place.find_price(@place) %> (5 max)</li>
+      <li class="list-group-item"> <strong>Price level:</strong> <br> <%= Place.find_price(@place) %> (5 max)</li>
       <li class="list-group-item">
         <% @place.url = "" if @place.url == "/" %>
         <%= link_to @place.url, @place.url, :target => "_blank" %>

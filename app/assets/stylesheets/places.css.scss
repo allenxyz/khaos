@@ -40,9 +40,8 @@ span[class="bold"] {
 	width:900px;
 	height:100%;
 	margin: auto;
-
-	margin-bottom: 10px;
 	margin-right: auto;
+	margin-bottom: none;
 	text-align: center;
 	text-transform: uppercase;
 
@@ -110,6 +109,9 @@ hr{
 }
 
 .sidebar{
+	position: none;
+	margin-top: 1.2em;
+	margin-right: 0.3em;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	vertical-align: center;
@@ -129,21 +131,21 @@ ul[class=".col-xs-3 .col-md-2 sidebar"] {
 
 .btn, .btn-default{
 	background: #ECECEC;
-		border-radius: 15px;
-		padding: 10px 10px;
-		display: block;
-		font-family: arial;
-		font-weight: bold;
-		color:#7f7f7f;
-		text-decoration: none;
-		text-shadow:0px 1px 0px #fff;
-		border:1px solid #a7a7a7;
-		width: 145px;
-		margin:0px auto;
-		margin-top:5px;
-		margin-bottom: 5px;
-		box-shadow: 0px 2px 1px white inset, 0px -2px 8px white, 0px 2px 5px rgba(0, 0, 0, 0.1), 0px 8px 10px rgba(0, 0, 0, 0.1);
-		-webkit-transition:box-shadow 0.5s;
+	border-radius: 15px;
+	padding: 10px 10px;
+	display: block;
+	font-family: arial;
+	font-weight: bold;
+	color:#7f7f7f;
+	text-decoration: none;
+	text-shadow:0px 1px 0px #fff;
+	border:1px solid #a7a7a7;
+	width: 145px;
+	margin:0px auto;
+	margin-top:5px;
+	margin-bottom: 5px;
+	box-shadow: 0px 2px 1px white inset, 0px -2px 8px white, 0px 2px 5px rgba(0, 0, 0, 0.1), 0px 8px 10px rgba(0, 0, 0, 0.1);
+	-webkit-transition:box-shadow 0.5s;
 }
 
 .btn-group{
@@ -243,8 +245,3 @@ button[class="restart_btn"]:hover {
 }
 
 
-
-.sidebar {
-	margin-top: 1.2em;
-	margin-right: 0.3em;
-}
