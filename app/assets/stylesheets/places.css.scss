@@ -119,7 +119,6 @@ hr{
 
 }
 
-
 ul[class=".col-xs-3 .col-md-2 sidebar"] {
 	width: 20%;
 	margin: auto;
@@ -190,7 +189,7 @@ button[class="btn btn-default"]:hover{
 
 
 
-ul[class="col-xs-3 col-md-2 sidebar"] {
+ul[class="col-xs-3 col-md-2 sidebar-offcanvas"] {
 	font-family: "Francois One", sans-serif;
 	font-size: 1.2em;
 }
@@ -246,3 +245,6 @@ button[class="restart_btn"]:hover {
 }
 
 
+.url {
+	word-warp: initial;
+}

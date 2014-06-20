@@ -130,14 +130,13 @@
     </div>
 
 <!-- Sidebar -->
-    <ul class="col-xs-3 col-md-2 sidebar">
+    <ul class="col-xs-3 col-md-2 sidebar-offcanvas">
       <li class="list-group-item underline"> <%= @place.loc %></li>
       <li class="list-group-item"> <strong> Types:</strong> <br><%= Place.list_tags(@place) %></li>
       <li class="list-group-item"> <%= image_tag @place.img %> </li>
       <li class="list-group-item"> <strong>Price level:</strong> <br> <%= Place.find_price(@place) %> (5 max)</li>
-      <li class="list-group-item">
-        <% @place.url = "" if @place.url == "/" %>
-        <%= link_to @place.url, @place.url, :target => "_blank" %>
+      <li class="list-group-item url">
+        <%= link_to Place.shorten(@place.url), @place.url, :target => "_blank" %>
        </li>
 
       <li class="list-group-item">

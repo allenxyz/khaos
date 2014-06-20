@@ -139,5 +139,16 @@ class Place < ActiveRecord::Base
 		return retval
 	end
 
+
+	def self.shorten(url)
+		return "" if !url
+		if url.length > 22
+			return url[0..22]+"..."
+		end
+
+
+	end
+
+
 end
 
