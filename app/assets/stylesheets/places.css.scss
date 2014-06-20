@@ -84,7 +84,7 @@ hr{
 
 .container-btn{
 	width:100%;
-	height:32px;
+	height:px;
 	margin-top: 0px;
 	margin-bottom: 0;
 	margin-left: auto;
@@ -95,7 +95,7 @@ hr{
 }
 
 #map-canvas {
-	height: 68%;
+	height: 60%;
 	width: 100%;
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -145,11 +145,11 @@ ul[class=".col-xs-3 .col-md-2 sidebar"] {
 }
 
 button[class="btn btn-default"] {
-	height: 3em;
+	height: 3.5em;
 	padding: 0px;
 	font-family: "Francois One", sans-serif;
 	text-transform: uppercase;
-	font-size: 1.5em;
+	font-size: 100%;
 	a {
 		text-decoration: none;
 		font-color:black;
@@ -179,9 +179,9 @@ button[class="btn btn-default"]:hover{
 
 
 
-ul[class="col-xs-3 col-md-2 sidebar"] {
+ul[class="col-xs-3 col-md-2 sidebar-offcanvas"] {
 	font-family: "Francois One", sans-serif;
-	font-size: 1.2em;
+	font-size: 1em;
 }
 
 
@@ -233,5 +233,6 @@ div.filter, div.restart {
 button[class="restart_btn"]:hover {
 	background-color: red;
 }
+
 
 
