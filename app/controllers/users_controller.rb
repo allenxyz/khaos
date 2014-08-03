@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
 
 	def create_new(input)
+		puts params
 		if !(@user = User.find_by(:name => session[:user_id]))
 
 			#should i use a session?

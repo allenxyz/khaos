@@ -57,7 +57,6 @@ class PlacesController < ApplicationController
 			rec.place = @place
 			#link it to approriate tag
 			@place.tags.each do |tag|
-				puts "akljdfalskjflakfj: #{tag.tag}"
 				t = @user.tags.find_by(:tag => tag.tag)
 				next if t == nil
 				rec.tags << t
@@ -70,6 +69,10 @@ class PlacesController < ApplicationController
 	end
 	
 	def index
+		puts "\nmy params are: #{params}"
+		puts
+		puts "my session is: #{session}"
+		puts
 		@user = User.find_by(:name => session[:user_id])
 		@place = @user.recs.last.place
 	end

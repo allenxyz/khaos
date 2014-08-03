@@ -51,8 +51,6 @@ class Place < ActiveRecord::Base
 		possible_place = Place.find_contains(tags)
 		been_to = user.recs.map {|rec| rec.place}
 
-		been_to.each {|been| puts been}
-		puts session[:user_id]
 
 		been_to_names = been_to.map do |place| 
 			Place.only_name(place.loc)
@@ -62,7 +60,6 @@ class Place < ActiveRecord::Base
 		#remove those that you have been to before
 
 		possible_place.each_index do |index|
-			puts possible_place[index].loc
 			while been_to.include?(possible_place[index]) || been_to_names.include?(Place.only_name(possible_place[index].loc))
 				possible_place.delete_at(index)
 				break if !possible_place[index+1]
@@ -118,7 +115,6 @@ class Place < ActiveRecord::Base
 			add = tag.tag[0].upcase + tag.tag[1..-1]
 			retval += add + ", "
 		end
-		puts retval
 
 		#change all _ to spaces
 		retval.each_char {|char| char = " " if char == "_"}
@@ -139,7 +135,6 @@ class Place < ActiveRecord::Base
 
 		retval = ""
 		(dollar + 1).times {retval += "$"}
-		puts retval
 		return retval
 	end
 
