@@ -143,8 +143,13 @@ class Place < ActiveRecord::Base
 		if url.length >= 27
 			return url[0..27] + "..."
 		end
+	end
 
-
+	def self.shorten(url)
+		return "" if !url
+		if url.length > 22
+			return url[0..22]+"..."
+		end
 	end
 
 

@@ -84,7 +84,7 @@ hr{
 
 .container-btn{
 	width:100%;
-	height:32px;
+	height:px;
 	margin-top: 0px;
 	margin-bottom: 0;
 	margin-left: auto;
@@ -95,7 +95,7 @@ hr{
 }
 
 #map-canvas {
-	height: 68%;
+	height: 60%;
 	width: 100%;
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -108,6 +108,17 @@ hr{
 	margin-top: 3%;
 }
 
+.sidebar{
+	clear: both;
+	position: none;
+	margin-top: 1.2em;
+	margin-right: 0.2em;
+	margin-left: 0.1em;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	vertical-align: center;
+
+}
 
 ul[class=".col-xs-3 .col-md-2 sidebar"] {
 	width: 20%;
@@ -145,11 +156,11 @@ ul[class=".col-xs-3 .col-md-2 sidebar"] {
 }
 
 button[class="btn btn-default"] {
-	height: 3em;
+	height: 3.5em;
 	padding: 0px;
 	font-family: "Francois One", sans-serif;
 	text-transform: uppercase;
-	font-size: 1.5em;
+	font-size: 100%;
 	a {
 		text-decoration: none;
 		font-color:black;
@@ -179,27 +190,31 @@ button[class="btn btn-default"]:hover{
 
 
 
-ul[class="col-xs-3 col-md-2 sidebar"] {
+ul[class="col-xs-3 col-md-2 sidebar-offcanvas"] {
 	font-family: "Francois One", sans-serif;
-	font-size: 1.2em;
+	font-size: 1em;
 }
 
 
 div.filter, div.restart {
 	width: 100%;
-	margin: none;
+	margin: 5px;
 	.filter_drop {}
 	.filter_drop {
 		padding: none;
 		font-family: "Francois One", sans-serif;
 		font-size: 1.2em;
+		line-height: 1;
 		width: 100%;
-		height: 100%;
+		height: 80%;
 		margin-top: 0px;
-		margin-bottom: 5px;
+		margin-bottom: 0px;
 	}
 }
 
+.dropdown-menu{
+	width: 220px;
+}
 .restart_li {
 	height: 84px;
 }
@@ -235,9 +250,10 @@ button[class="restart_btn"]:hover {
 }
 
 
-
-
 .dropdown-menu  {
 	width: 220px;
 
+}
+.url {
+	word-warp: initial;
 }

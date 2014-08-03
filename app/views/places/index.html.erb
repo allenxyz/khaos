@@ -97,9 +97,8 @@
           <%= @user.curloc %>
           <%= link_to "(Wrong?)", root_path %>
           </p>
-        </div>
 
-       
+        </div>
         <p>Your reccomended place to go: <span class="underline"><span class="bold"> <%= @place.loc %>, <%= @place.address %> </strong></span> </p>
 <!-- Map -->
         <div id="map-canvas" class = "col-md-10"> </div>
@@ -136,16 +135,19 @@
       <li class="list-group-item"> <strong> Types:</strong> <br><%= Place.list_tags(@place) %></li>
       <li class="list-group-item"> <%= image_tag @place.img %> </li>
       <li class="list-group-item"> <strong>Price level:</strong> <br> <%= Place.find_price(@place) %> (5 max)</li>
-      <li class="list-group-item">
-        <%= link_to Place.find_url(@place.url), @place.url, :target => "_blank" %>
+      <li class="list-group-item url">
+        <%= link_to Place.shorten(@place.url), @place.url, :target => "_blank" %>
        </li>
 
       <li class="list-group-item">
       <!-- filter buttons -->
         <div class="btn-group filter">
           <button type="button" class="btn btn-default dropdown-toggle filter_drop" data-toggle="dropdown">
+            <br>
             Filter
+            <br>
             <span class="caret"></span>
+
           </button>
           <ul class="dropdown-menu">
             <li><%= link_to "Feed me!", "FeedMe", :method => "put"%> </li>
